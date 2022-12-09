@@ -1,0 +1,51 @@
+name: 'Custom GitHub Python Action'
+description: 'A GitHub Action that takes input log file and outputs compile_commands.json'
+inputs:
+  log_file:
+    description: 'The Log File'
+    required: false
+    default: "build.log"
+  compile_commands:
+    description: 'The Json File'
+    required: false
+    default: "compile_commands.json"
+  config:
+    description: 'The Config Folder'
+    required: false
+    default: "config"
+outputs:
+  init:
+    description: 'The Final Json Generated'
+    # need to specify the extra `value` field for `composite` actions
+    value: ${{ steps.compile-commands.outputs.init }}
+runs:
+  using: 'composite'
+  steps:
+
+    # - name: Install Python
+    #   uses: actions/setup-python@v4
+    #   with:
+    #     python-version: '3.10'
+
+    # - name: Install Dependencies
+    #   run: pip install -r requirements.txt
+    #   shell: bash
+
+    - name: Generate Compile Commands
+      id: compile-commands
+      run: |
+        python src/main.py --log ${{ inputs.log_file }} \
+                           --output ${{ inputs.compile_commands }} \
+                           --config ${{ inputs.config }}
+      shell: bash
+
+    - name: Print the square
+      run: |
+        echo "${{ steps.compile-commands.outputs.init }}"
+      shell: bash
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: compile_commands
+        path: config/
+      shell: bash
