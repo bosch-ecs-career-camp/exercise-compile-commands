@@ -3,15 +3,15 @@ description: 'A GitHub Action that takes input log file and outputs compile_comm
 inputs:
   log_file:
     description: 'The Log File'
-    required: false
+    required: true
     default: "build.log"
   compile_commands:
     description: 'The Json File'
-    required: false
+    required: true
     default: "compile_commands.json"
   config:
     description: 'The Config Folder'
-    required: false
+    required: true
     default: "config"
 outputs:
   init:
@@ -35,8 +35,8 @@ runs:
       id: compile-commands
       run: |
         python3 src/main.py --log ${{ inputs.log_file }} \
-                           --output ${{ inputs.compile_commands }} \
-                           --config ${{ inputs.config }}
+                            --output ${{ inputs.compile_commands }} \
+                            --config ${{ inputs.config }}
       shell: bash
 
     - name: Print the square

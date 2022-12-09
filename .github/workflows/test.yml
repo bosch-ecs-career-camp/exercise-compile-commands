@@ -15,3 +15,7 @@ jobs:
 
       - name: Test Action
         uses: ./
+        with:
+          log_file: "build.log"
+          compile_commands: "compile_commands.json"
+          config: "config"
