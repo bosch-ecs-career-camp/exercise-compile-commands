@@ -1,0 +1,14 @@
+name: Test
+
+on:
+  push:
+
+jobs:
+  job:
+    name: Job1
+    runs-on: self-hosted
+
+    steps:
+
+      - name: Test Action
+        uses: ./
