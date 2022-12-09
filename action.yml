@@ -34,7 +34,7 @@ runs:
     - name: Generate Compile Commands
       id: compile-commands
       run: |
-        python src/main.py --log ${{ inputs.log_file }} \
+        python3 src/main.py --log ${{ inputs.log_file }} \
                            --output ${{ inputs.compile_commands }} \
                            --config ${{ inputs.config }}
       shell: bash
