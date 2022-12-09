@@ -48,4 +48,3 @@ runs:
       with:
         name: compile_commands
         path: config/
-      shell: bash
