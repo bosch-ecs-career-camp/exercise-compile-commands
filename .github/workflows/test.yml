@@ -2,9 +2,11 @@ name: Test
 
 on:
   pull_request:
-    branch: [ "main" ]
-    path: [ "src/main.py" ]
-
+    branches:
+      - "main"
+    paths: 
+      - "src/main.py"
+      - ".github/workflow/test.yml"
 
 jobs:
   job:
