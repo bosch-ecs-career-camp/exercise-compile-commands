@@ -4,11 +4,13 @@ import argparse
 import json
 import re
 
+import github_action_utils as gha_utils
+
 global DEBUG
 global MAIN_DIR
 global PROJ_DIR
 
-DEBUG = "Off"
+DEBUG = "On"
 MAIN_DIR = os.path.dirname(sys.argv[0])
 PROJ_DIR = os.path.abspath(os.path.join(MAIN_DIR,os.pardir))
 
@@ -100,3 +102,11 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    with gha_utils.group("Test Group"):
+        gha_utils.error(
+            "Error message", title="Error Title", file="main.py",
+            col=1, end_column=2, line=1, end_line=2,
+        )
+        gha_utils.notice("Notice Message")
+        gha_utils.append_job_summary("# Hello World !")

@@ -1,12 +1,17 @@
 name: Test
 
 on:
-  push:
+  pull_request:
+    branches:
+      - "main"
+    paths: 
+      - "src/main.py"
+      - ".github/workflows/test.yml"
 
 jobs:
   job:
     name: Job1
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
 
