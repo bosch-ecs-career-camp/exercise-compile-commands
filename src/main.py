@@ -4,7 +4,7 @@ import argparse
 import json
 import re
 
-import github-action-utils as gha_utils
+import github_action_utils as gha_utils
 
 global DEBUG
 global MAIN_DIR
