@@ -24,19 +24,3 @@ jobs:
           log_file: "build.log"
           compile_commands: "compile_commands.json"
           config: "config"
-
-      - name: Install Dependencies
-        run: python -m pip install github-action-utils
-
-      - name: Run python script
-        shell: python
-        run: |
-          import github-actions-utils as gha_utils
-
-          with gha_utils.group("Test Group"):
-            gha_utils.error(
-                "Error message", title="Error Title", file="main.py",
-                col=1, end_column=2, line=1, end_line=2,
-            )
-            gha_utils.notice("Notice Message")
-            gha_utils.append_job_summary("# Hello World !")
