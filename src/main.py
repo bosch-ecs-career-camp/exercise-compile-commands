@@ -104,9 +104,9 @@ if __name__ == "__main__":
     main()
 
     with gha_utils.group("Test Group"):
-    gha_utils.error(
-        "Error message", title="Error Title", file="main.py",
-        col=1, end_column=2, line=1, end_line=2,
-    )
-    gha_utils.notice("Notice Message")
-    gha_utils.append_job_summary("# Hello World !")
+        gha_utils.error(
+            "Error message", title="Error Title", file="main.py",
+            col=1, end_column=2, line=1, end_line=2,
+        )
+        gha_utils.notice("Notice Message")
+        gha_utils.append_job_summary("# Hello World !")
